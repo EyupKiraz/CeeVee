@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import firebase from 'gatsby-plugin-firebase';
+import { useObjectVal } from 'react-firebase-hooks/database';
 import Hero from './Hero/Hero';
 import About from './About/About';
 import Projects from './Projects/Projects';
@@ -7,9 +9,9 @@ import Footer from './Footer/Footer';
 
 import { PortfolioProvider } from '../context/context';
 
-import { heroData, aboutData, projectsData, contactData, footerData } from '../mock/data';
-
 function App() {
+  const [data, isLoading] = useObjectVal(firebase.database().ref());
+
   const [hero, setHero] = useState({});
   const [about, setAbout] = useState({});
   const [projects, setProjects] = useState([]);
@@ -17,21 +19,29 @@ function App() {
   const [footer, setFooter] = useState({});
 
   useEffect(() => {
-    setHero({ ...heroData });
-    setAbout({ ...aboutData });
-    setProjects([...projectsData]);
-    setContact({ ...contactData });
-    setFooter({ ...footerData });
-  }, []);
+    if (!isLoading) {
+      setHero({ ...data.hero });
+      setAbout({ ...data.about });
+      setProjects([...data.projects]);
+      setContact({ ...data.contact });
+      setFooter({ ...data.footer });
+    }
+  }, [data]);
 
   return (
-    <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </PortfolioProvider>
+    <>
+      {isLoading ? (
+        'Loading...'
+      ) : (
+        <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+          <Footer />
+        </PortfolioProvider>
+      )}
+    </>
   );
 }
 
