@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import uuid from 'react-uuid';
 import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -26,12 +27,12 @@ const Projects = () => {
     <section id="projects">
       <Container>
         <div className="project-wrapper">
-          <Title title="Projects" />
-          {projects.map((project,index) => {
-            const { title, info, info2, url, repo, img } = project;
+          <Title title="Work Experience" />
+          {projects.map(project => {
+            const { title, info, info2, url, img } = project;
 
             return (
-              <Row key={index}>
+              <Row key={uuid()}>
                 <Col lg={4} sm={12}>
                   <Fade
                     left={isDesktop}
@@ -57,17 +58,6 @@ const Projects = () => {
                       >
                         See Live
                       </a>
-
-                      {repo && (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="cta-btn text-color-main"
-                          href={repo}
-                        >
-                          Source Code
-                        </a>
-                      )}
                     </div>
                   </Fade>
                 </Col>
