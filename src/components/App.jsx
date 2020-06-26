@@ -1,52 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import firebase from 'gatsby-plugin-firebase';
-import { useObjectVal } from 'react-firebase-hooks/database';
 import { isNode } from '@firebase/util';
-import Hero from './Hero/Hero';
+import React, { useEffect, useState } from 'react';
+import * as FirestoreService from '../../firebase';
+import { PortfolioProvider } from '../context/context';
 import About from './About/About';
-import Projects from './Projects/Projects';
 import Contact from './Contact/Contact';
 import Footer from './Footer/Footer';
+import Hero from './Hero/Hero';
+import Projects from './Projects/Projects';
 
-import { PortfolioProvider } from '../context/context';
-
-function App() {
+function App({id}) {
   if (isNode() === true) {
     return null;
   }
 
-  const [data, isLoading] = useObjectVal(firebase.database().ref());
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (!data) {
+      FirestoreService.getData(id).then((item) => { setData(item.data().data) });
+    }
+  }, [data]);
 
   const [hero, setHero] = useState({});
   const [about, setAbout] = useState({});
   const [projects, setProjects] = useState([]);
   const [contact, setContact] = useState({});
-  const [footer, setFooter] = useState({});
+  const [footer, setFooter] = useState([]);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (data) {
       setHero({ ...data.hero });
       setAbout({ ...data.about });
       setProjects([...data.projects]);
       setContact({ ...data.contact });
-      setFooter({ ...data.footer });
+      setFooter([...data.footer]);
     }
   }, [data]);
 
   return (
-    <>
-      {isLoading ? (
-        'Loading...'
-      ) : (
-        <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-          <Footer />
-        </PortfolioProvider>
-      )}
-    </>
+    <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
+      <Footer />
+    </PortfolioProvider>
   );
 }
 

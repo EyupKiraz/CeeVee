@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import PortfolioContext from '../../context/context';
+import uuid from 'uuid';
 
 const Footer = () => {
   const { footer } = useContext(PortfolioContext);
-  const { networks } = footer;
 
   return (
     <footer className="footer navbar-static-bottom">
@@ -13,12 +13,12 @@ const Footer = () => {
           <i className="fa fa-angle-up fa-2x" aria-hidden="true" />
         </a>
         <div className="social-links">
-          {networks &&
-            networks.map(network => {
-              const { id, name, url } = network;
+          {footer &&
+            footer.map(network => {
+              const { name, url } = network;
               return (
                 <a
-                  key={id}
+                  key={uuid()}
                   href={url || 'https://github.com/cobidev/gatsby-simplefolio'}
                   rel="noopener noreferrer"
                   target="_blank"
