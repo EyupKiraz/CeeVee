@@ -18,9 +18,14 @@ function App({ id }) {
 
   useEffect(() => {
     if (!data) {
-      FirestoreService.getData(id).then((item) => { setData(item.data().data) }).catch((error) => {
+      try {
+        FirestoreService.getData(id).then((item) => { setData(item.data().data) }).catch((error) => {
+          FirestoreService.getData(defaultID).then((item) => { setData(item.data().data) })
+        });
+      } catch (error) {
         FirestoreService.getData(defaultID).then((item) => { setData(item.data().data) })
-      });
+      }
+
     }
   }, [data]);
 
