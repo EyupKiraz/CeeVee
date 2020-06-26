@@ -36,7 +36,6 @@
     "react-github-btn": "^1.1.1",
     "react-helmet": "^5.2.1",
     "react-reveal": "^1.2.2",
-    "react-router-native": "^5.2.0",
     "react-tilt": "^0.1.4",
     "react-uuid": "^1.0.2",
     "uuid": "^3.4.0"
