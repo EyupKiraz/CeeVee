@@ -8,16 +8,19 @@ import Footer from './Footer/Footer';
 import Hero from './Hero/Hero';
 import Projects from './Projects/Projects';
 
-function App({id}) {
+function App({ id }) {
   if (isNode() === true) {
     return null;
   }
 
   const [data, setData] = useState(null);
+  const defaultID = "4690137630028667272";
 
   useEffect(() => {
     if (!data) {
-      FirestoreService.getData(id).then((item) => { setData(item.data().data) });
+      FirestoreService.getData(id).then((item) => { setData(item.data().data) }).catch((error) => {
+        FirestoreService.getData(defaultID).then((item) => { setData(item.data().data) })
+      });
     }
   }, [data]);
 
