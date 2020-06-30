@@ -6,7 +6,7 @@ import PortfolioContext from '../../context/context';
 
 const About = () => {
   const { about } = useContext(PortfolioContext);
-  const { aboutMe } = about;
+  const { aboutMe, img } = about;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -27,18 +27,16 @@ const About = () => {
         <Title title="About Me" />
         <Row className="about-wrapper">
           <Col md={6} sm={12}>
-            {/* <Fade bottom duration={1000} delay={600} distance="30px">
+            <Fade bottom duration={1000} delay={600} distance="30px">
               <div className="about-wrapper__image">
-                <AboutImg alt="profile picture" filename={img} />
+                <img src={img} style={{ maxHeight: '400px', maxWidth: '500px' }} alt="profile" />
               </div>
-            </Fade> */}
+            </Fade>
           </Col>
           <Col md={6} sm={12}>
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
               <div className="about-wrapper__info">
-                <p className="about-wrapper__info-text">
-                  {aboutMe}
-                </p>
+                <p className="about-wrapper__info-text">{aboutMe}</p>
                 {/* {resume && (
                   <span className="d-flex mt-3">
                     <a

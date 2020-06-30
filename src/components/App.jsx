@@ -1,4 +1,5 @@
 import { isNode } from '@firebase/util';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import * as FirestoreService from '../../firebase';
 import { PortfolioProvider } from '../context/context';
@@ -14,18 +15,25 @@ function App({ id }) {
   }
 
   const [data, setData] = useState(null);
-  const defaultID = "4690137630028667272";
+  const defaultID = '4690137630028667272';
 
   useEffect(() => {
     if (!data) {
       try {
-        FirestoreService.getData(id).then((item) => { setData(item.data().data) }).catch((error) => {
-          FirestoreService.getData(defaultID).then((item) => { setData(item.data().data) })
-        });
+        FirestoreService.getData(id)
+          .then(item => {
+            setData(item.data().data);
+          })
+          .catch(() => {
+            FirestoreService.getData(defaultID).then(item => {
+              setData(item.data().data);
+            });
+          });
       } catch (error) {
-        FirestoreService.getData(defaultID).then((item) => { setData(item.data().data) })
+        FirestoreService.getData(defaultID).then(item => {
+          setData(item.data().data);
+        });
       }
-
     }
   }, [data]);
 
@@ -55,5 +63,9 @@ function App({ id }) {
     </PortfolioProvider>
   );
 }
+
+App.propTypes = {
+  id: PropTypes.string,
+};
 
 export default App;
