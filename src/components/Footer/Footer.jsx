@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import PortfolioContext from '../../context/context';
 import uuid from 'uuid';
+import PortfolioContext from '../../context/context';
 
 const Footer = () => {
   const { footer } = useContext(PortfolioContext);
@@ -16,17 +16,20 @@ const Footer = () => {
           {footer &&
             footer.map(network => {
               const { name, url } = network;
-              return (
-                <a
-                  key={uuid()}
-                  href={url || 'https://github.com/cobidev/gatsby-simplefolio'}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  aria-label={name}
-                >
-                  <i className={`fa fa-${name || 'refresh'} fa-inverse`} />
-                </a>
-              );
+              if (network.name) {
+                return (
+                  <a
+                    key={uuid()}
+                    href={url || 'https://github.com/cobidev/gatsby-simplefolio'}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    aria-label={name}
+                  >
+                    <i className={`fa fa-${'refresh'} fa-inverse`} />
+                  </a>
+                );
+              }
+              return null;
             })}
         </div>
         <hr />
