@@ -5,17 +5,16 @@ import { Helmet } from 'react-helmet';
 import App from '../components/App';
 import '../style/main.scss';
 
-
-export default ({ location }) => {
+export default location => {
   const { id } = queryString.parse(location.search);
 
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{'My Portfolio'}</title>
-        <html lang={'en'} />
-        <meta name="description" content={'My Portfolio'} />
+        <title>My Portfolio</title>
+        <html lang="en" />
+        <meta name="description" content="My Portfolio" />
       </Helmet>
       <App id={id} />
     </>

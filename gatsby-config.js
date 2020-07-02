@@ -31,6 +31,21 @@ module.exports = {
         icon: 'src/images/favicon.png',
       },
     },
+    {
+      resolve: 'gatsby-source-firestore',
+      options: {
+        credential: require('./permissions.json'),
+        types: [
+          {
+            type: 'Jotform',
+            collection: 'jotform',
+            map: doc => ({
+              data: doc.data,
+            }),
+          },
+        ],
+      },
+    },
   ],
   pathPrefix: '/eyup-kiraz-portfolio',
 };

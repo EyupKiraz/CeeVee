@@ -1,4 +1,5 @@
 import { isNode } from '@firebase/util';
+import ApolloClient, { gql } from 'apollo-boost';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import * as FirestoreService from '../../firebase';
@@ -13,6 +14,44 @@ function App({ id }) {
   if (isNode() === true) {
     return null;
   }
+
+  const client = new ApolloClient({
+    uri: '/__graphql',
+  });
+
+  client
+    .query({
+      query: gql`
+        {
+          jotform {
+            data {
+              about {
+                aboutMe
+                img
+              }
+              contact {
+                email
+              }
+              footer {
+                name
+                url
+              }
+              hero {
+                title
+                subtitle
+              }
+              projects {
+                desc
+                img
+                title
+                url
+              }
+            }
+          }
+        }
+      `,
+    })
+    .then(result => console.log(result));
 
   const [data, setData] = useState(null);
   const defaultID = '4690137630028667272';
