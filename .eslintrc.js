@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb', 'prettier'],
+  extends: ['prettier'],
   plugins: ['prettier'],
   env: {
     browser: true,
@@ -7,7 +7,7 @@ module.exports = {
   },
   rules: {
     'import/no-extraneous-dependencies': 'off',
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'error',
     'no-console': 'warn',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-filename-extension': 'off', // disable if necessary

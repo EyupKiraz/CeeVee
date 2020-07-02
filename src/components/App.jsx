@@ -1,8 +1,4 @@
-import { isNode } from '@firebase/util';
-import ApolloClient, { gql } from 'apollo-boost';
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import * as FirestoreService from '../../firebase';
+import React from 'react';
 import { PortfolioProvider } from '../context/context';
 import About from './About/About';
 import Contact from './Contact/Contact';
@@ -10,90 +6,9 @@ import Footer from './Footer/Footer';
 import Hero from './Hero/Hero';
 import Projects from './Projects/Projects';
 
-function App({ id }) {
-  if (isNode() === true) {
-    return null;
-  }
-
-  const client = new ApolloClient({
-    uri: '/__graphql',
-  });
-
-  client
-    .query({
-      query: gql`
-        {
-          jotform {
-            data {
-              about {
-                aboutMe
-                img
-              }
-              contact {
-                email
-              }
-              footer {
-                name
-                url
-              }
-              hero {
-                title
-                subtitle
-              }
-              projects {
-                desc
-                img
-                title
-                url
-              }
-            }
-          }
-        }
-      `,
-    })
-    .then(result => console.log(result));
-
-  const [data, setData] = useState(null);
-  const defaultID = '4690137630028667272';
-
-  useEffect(() => {
-    if (!data) {
-      try {
-        FirestoreService.getData(id)
-          .then(item => {
-            setData(item.data().data);
-          })
-          .catch(() => {
-            FirestoreService.getData(defaultID).then(item => {
-              setData(item.data().data);
-            });
-          });
-      } catch (error) {
-        FirestoreService.getData(defaultID).then(item => {
-          setData(item.data().data);
-        });
-      }
-    }
-  }, [data]);
-
-  const [hero, setHero] = useState({});
-  const [about, setAbout] = useState({});
-  const [projects, setProjects] = useState([]);
-  const [contact, setContact] = useState({});
-  const [footer, setFooter] = useState([]);
-
-  useEffect(() => {
-    if (data) {
-      setHero({ ...data.hero });
-      setAbout({ ...data.about });
-      setProjects([...data.projects]);
-      setContact({ ...data.contact });
-      setFooter([...data.footer]);
-    }
-  }, [data]);
-
+function App({ data }) {
   return (
-    <PortfolioProvider value={{ hero, about, projects, contact, footer }}>
+    <PortfolioProvider value={{ ...data }}>
       <Hero />
       <About />
       <Projects />
@@ -102,9 +17,5 @@ function App({ id }) {
     </PortfolioProvider>
   );
 }
-
-App.propTypes = {
-  id: PropTypes.string,
-};
 
 export default App;
