@@ -1,6 +1,6 @@
 $spinner: #02aab0;
 $background: white;
-$size: 30px;
+$size: 24px;
 
 html {
   background-color: $background;
@@ -9,8 +9,8 @@ html {
 .spinner {
   top: calc(50% - #{$size / 2});
   left: calc(50% - #{$size / 2});
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
   width: $size;
   height: $size;
   animation: spinner 0.75s linear infinite;

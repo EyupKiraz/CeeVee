@@ -12,21 +12,19 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { loading, sent, error } = useSelector(state => state);
-
   const [buttonState, setButton] = useState('');
 
   const handleClick = () => {
-    console.log('clicked');
     dispatch(sendEmail());
   };
 
   useEffect(() => {
-    if (sent === true) {
-      setButton('success');
+    if (loading === true) {
+      setButton('loading');
     } else if (error === true) {
       setButton('error');
-    } else if (loading === true) {
-      setButton('loading');
+    } else if (sent === true) {
+      setButton('success');
     }
   }, [loading]);
 
@@ -90,6 +88,3 @@ const ProgressButton = ({ buttonState, onClick }) => {
 };
 
 export default Header;
-
-{
-}
