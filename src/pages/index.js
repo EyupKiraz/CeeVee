@@ -3,8 +3,15 @@ import { StaticQuery, graphql } from 'gatsby';
 import * as queryString from 'query-string';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { configureStore } from '@reduxjs/toolkit';
 import App from '../components/App';
+import reducer from '../store/contactStore';
+import { Provider } from 'react-redux';
 import '../style/main.scss';
+
+const store = configureStore({
+  reducer,
+});
 
 export default ({ location }) => {
   const { id } = queryString.parse(location.search);
@@ -21,7 +28,7 @@ export default ({ location }) => {
         }
 
         return (
-          <>
+          <Provider store={store}>
             <Helmet>
               <meta charSet="utf-8" />
               <title>My Portfolio</title>
@@ -29,7 +36,7 @@ export default ({ location }) => {
               <meta name="description" content="My Portfolio" />
             </Helmet>
             <App data={data.node.data} />
-          </>
+          </Provider>
         );
       }}
     />
