@@ -1,17 +1,22 @@
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import * as queryString from 'query-string';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { configureStore } from '@reduxjs/toolkit';
-import App from '../components/App';
-import reducer from '../store/contactStore';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import App from '../components/App';
+import mySaga from '../sagas';
+import reducer from '../store';
 import '../style/main.scss';
 
-const store = configureStore({
-  reducer,
-});
+const sagaMiddleware = createSagaMiddleware();
+
+const middleware = [...getDefaultMiddleware(), sagaMiddleware];
+
+const store = configureStore({ reducer, middleware });
+sagaMiddleware.run(mySaga);
 
 export default ({ location }) => {
   const { id } = queryString.parse(location.search);

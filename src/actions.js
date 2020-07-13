@@ -1,3 +1,3 @@
-import { sendEmail } from './store/contactStore';
+import { sendEmail, resetButton } from './store/contactStore';
 
-export { sendEmail };
+export { sendEmail, resetButton };
