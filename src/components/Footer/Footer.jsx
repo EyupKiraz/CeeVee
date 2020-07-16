@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import uuid from 'uuid';
 import PortfolioContext from '../../context/context';
+import FontAwesomeIcon from 'react-fontawesome';
 
 const Footer = () => {
   const { footer } = useContext(PortfolioContext);
@@ -9,9 +10,6 @@ const Footer = () => {
   return (
     <footer className="footer navbar-static-bottom">
       <Container>
-        <a href="#top" aria-label="Back To Top" className="back-to-top">
-          <i className="fa fa-angle-up fa-2x" aria-hidden="true" />
-        </a>
         <div className="social-links">
           {footer &&
             footer.map(network => {
@@ -25,7 +23,7 @@ const Footer = () => {
                     target="_blank"
                     aria-label={name}
                   >
-                    <i className={`fa fa-${'refresh'} fa-inverse`} />
+                    <FontAwesomeIcon name={name}></FontAwesomeIcon>
                   </a>
                 );
               }
