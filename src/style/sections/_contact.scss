@@ -33,36 +33,4 @@
       }
     }
   }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__text {
-      font-size: 1.6rem;
-
-      // Responsive for contact text
-      @include respond(phone) {
-        font-size: 2rem;
-      }
-    }
-
-    a {
-      font-size: 2.4rem;
-
-      // Responsive for contact text
-      @include respond(phone) {
-        font-size: 2rem;
-      }
-    }
-
-    a:hover {
-      color: $dark-blue-text;
-    }
-
-    &__group {
-      width: 65%;
-    }
-  }
 }
