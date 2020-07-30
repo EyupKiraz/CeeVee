@@ -7,8 +7,7 @@
 :exclamation: Modern UI Design + Reveal Animations\
 :exclamation: One Page Layout built with React\
 :exclamation: Fully Responsive\
-:exclamation: Place four projects, social links and an about me section\
-:exclamation: A contact form
+:exclamation: Place for four projects, social links and an about me section
 
 ## How To Start Your Own Portfolio 🔧
 
