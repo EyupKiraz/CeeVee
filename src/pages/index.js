@@ -1,10 +1,22 @@
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import * as queryString from 'query-string';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 import App from '../components/App';
+import mySaga from '../sagas';
+import reducer from '../store';
 import '../style/main.scss';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const middleware = [...getDefaultMiddleware(), sagaMiddleware];
+
+const store = configureStore({ reducer, middleware });
+sagaMiddleware.run(mySaga);
 
 export default ({ location }) => {
   const { id } = queryString.parse(location.search);
@@ -21,7 +33,7 @@ export default ({ location }) => {
         }
 
         return (
-          <>
+          <Provider store={store}>
             <Helmet>
               <meta charSet="utf-8" />
               <title>My Portfolio</title>
@@ -29,7 +41,7 @@ export default ({ location }) => {
               <meta name="description" content="My Portfolio" />
             </Helmet>
             <App data={data.node.data} />
-          </>
+          </Provider>
         );
       }}
     />
