@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eyup-kiraz-portfolio-f9862",
+  "private_key_id": "4a015c74e06bde7a72fc592b7e250ea5f040b9c6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2h8xHaAVJBiUe\nXtCHeWicbw6G+yZoFPr2qvAwbGG905XIwr91hV1S+zR5bXbr+wOXjqUX9HcH9dOV\nsllGFa9Pzvit9ATLKlK0fCeXlbrZHaQRr/KG1mOtemtJzXD542Co+vrBKfe3vSyh\nbl+KDykcLW7rJzXjz5FVzpoaVhuD2IU1HBQd9DJ4uUNxl2awxV5dFV0lUDY6dgt4\npNLCxeBucyrv6uJ/JGbwb+BsJKHxHJVckH8D3EKA9uY0Je+1KgFKp8u6T/UHUUnf\nJKbMqlmOFMdvOoWGti93dct1yZ5XdoUcnDOWYBMEImsGrJ+hSP9MKrA8QDtxJg6f\nS1pBfF2TAgMBAAECggEAHLxdSyKTrm7iuhjIMIPLFdGgEl0Iq1seNWYs4Rq2+okM\nbCpItQo1aoJ0vOcgUT9XzezdjdtlP+ISGN+WkWOJkYFugghIFuoHUjW3j/Q5EcRK\nV6SBBHxM/fsnV9uZfSWwSnoUrwNZ5dnI5HM5ZEVFvhNjAm9OWxqK8VzQwvOqakOP\n4NgF8r4SptJb9meqpA9klmXFLAabf1kDq9a/ej4wMfAZsTXBRxW4Hqgo8JvqVqBf\nc+EHXE8bkA4wT2fExAH9bRXBc9DyOJ7O/UNK/m4bCuUhYQFP6baIj9fsfj1XrAnj\nbQFMXHYWoU6MbddgmsHK8MXZWMbLHVsIMd18PB9b5QKBgQD4WGgiENe3IiQQAROU\nnI2xtY3aB95M8UEh4hymnxsstFDX117evgScdtEKgmg1OjpgvuCY5EIZf0U1z9Sy\nLfBGw9ooTxTx4D0xNKSHQNqji/8G3mRrh7bKhbnPqWsSdUzD92nr7lgoWuuND/I0\nVJ8uokq7mneNqGWzB0pPXqTQhQKBgQC8KBKMF1uxiwkaqHA+Hj2jWuNQzQi4JYBq\nYSNXE7u2XdAbKVVtmEiKNusUxKIJxk/DC1IA6YmDrcXgiaIJfXr5VjqWfWueVsd8\nZZ1iAzSMaRN/+elLu0Ym5Fk10U+fws+2OwaNPFwNdnTd7eZc57FNsNCn6NSHhSJt\nQzqK1wqdNwKBgQDTSANv1/xuJXGg3AmYiYhTBC7mq4MI2sea2A+gAgTQh6evud9Q\niUDLDJrT4hZeEmfQHxRdfvRtVMXA/kvqOwMMcVuMp5seHLRyxGKlXxujwFr7sQCm\nKxPsQNDQR0Z8sabZoghPXLtLue5kWIiq1MOInTIPYV8M+ZNsOGuUEuUNMQKBgQC3\nklEmJNPtED09qQB5Wn/AlLga6S+MmeoD3+ne1v3ZGwYiud0DJAQB9Tq99GozJyxC\nmxTSlwb3Vd8tBpr0r1v/T8WxdYQ942SVVX6LVZ07MHk57tVScdArubXf7+rDcAm/\nPS9TNISLDftPWv/ZvKMbrVqlt19DKP1BpMnFE7DjWQKBgGGGh5qxDcXnLmC/5d5k\nPSmSKSUXTuM2JicmDicyECP8gsG9revalx3o2+C7+GXE77WCwI9KisecBz63K8XW\nb9k+mYCPwEds/ThWVRvUtiXqkKJxshd1wnoUenF1ha9ImpUkusnjO19XCmfP80pR\nxwAAMSM9qt51vEY3Mr5aAOrX\n-----END PRIVATE KEY-----\n",
+  "client_email": "api-access@eyup-kiraz-portfolio-f9862.iam.gserviceaccount.com",
+  "client_id": "113229518646879154746",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/api-access%40eyup-kiraz-portfolio-f9862.iam.gserviceaccount.com"
+}
